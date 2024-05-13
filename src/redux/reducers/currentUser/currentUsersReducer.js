@@ -1,5 +1,10 @@
 import {loadCurrentUser}  from "./currentUserAPI"
 
+// Reducers
+export const initialCurrentUser = {
+    name:"Albert Ghumashyan"
+}
+
 export  function currentUsersReducer  (state={}, action) {
     if(action.type == "edit-current-user-name"){
         return {
@@ -9,15 +14,9 @@ export  function currentUsersReducer  (state={}, action) {
     }
     return state
 }
+// ====
 
-export const initialCurrentUser = {
-    name:"Albert Ghumashyan"
-}
-
-export function selectName(state){
-    return state.currentUsers.name
-}
-
+// Action
 export function editName(newName){
     return {
         type:"edit-current-user-name",
@@ -27,6 +26,11 @@ export function editName(newName){
     }
 }
 
+export function selectName(state){
+    return state.currentUsers.name
+}
+
+
 export function loadUser(){
     return (dispatch, getState)=> {
         return loadCurrentUser().then((user) => {
@@ -34,3 +38,4 @@ export function loadUser(){
         })
     }
 }
+// ====
